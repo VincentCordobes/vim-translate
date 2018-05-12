@@ -16,6 +16,8 @@ Use your favorite plugin manager.
 - [vim-plug](https://github.com/junegunn/vim-plug)
   1. Add `Plug 'VincentCordobes/vim-translate'` to .vimrc
   2. Run `:PlugInstall`
+  
+Make sure you've installed [translate-shell](https://github.com/soimort/translate-shell)
 
 Usage
 -----
