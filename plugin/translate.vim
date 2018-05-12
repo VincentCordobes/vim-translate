@@ -13,7 +13,6 @@ function! s:translate(source_target) range
     call msg_error('translate-shell not found. Please install it.')
     return
   endif 
-  echomsg "Translating..."
 
   call s:translate_clear()
 
