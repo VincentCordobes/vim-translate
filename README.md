@@ -3,6 +3,10 @@ vim-translate
 
 A tiny [translate-shell](https://github.com/soimort/translate-shell) wrapper for Vim.
 
+<p align="center">
+<img  width="480" src="https://user-images.githubusercontent.com/7091110/39960829-09f2cc2c-562a-11e8-916b-51c00c36fa89.gif"></img>
+</p>
+
 
 Installation
 ------------
