@@ -17,7 +17,9 @@ Usage
 -----
 
 - `:Translate en:fr`
-    - translate english → french @see [here](https://github.com/soimort/translate-shell#code-list) for code list
+    - translate **english → french** (see [here](https://github.com/soimort/translate-shell#code-list) for code list)
+    
+    
 - `:TranslateClear`
     - Quit the translation buffer
 
