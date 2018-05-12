@@ -1,7 +1,7 @@
 vim-translate
 =============
 
-A tiny [translate-shell](https://github.com/soimort/translate-shell) wrapper for Vim.
+🌎 A tiny [translate-shell](https://github.com/soimort/translate-shell) wrapper for Vim.
 
 <p align="center">
 <img  width="600" src="https://user-images.githubusercontent.com/7091110/39960996-7012d8fa-562d-11e8-9216-b604d43ad284.gif"></img>
