@@ -13,6 +13,7 @@ function! s:translate(source_target) range
     call msg_error('translate-shell not found. Please install it.')
     return
   endif 
+  echomsg "Translating..."
 
   call s:translate_clear()
 
@@ -27,7 +28,6 @@ function! s:translate(source_target) range
         \ . '-no-warn '
         \ . '-brief '
         \ . a:source_target 
-  echomsg l:cmd
   exe l:cmd
   execute('resize ' . line('$'))
   wincmd p
