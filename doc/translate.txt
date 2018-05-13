@@ -1,0 +1,35 @@
+*translate.txt*	A tiny translate-shell wrapper for Vim.
+
+==============================================================================
+CONTENTS                                                           *translate*
+
+    1. Install ....................................... |translate-install|
+    2. Usage ........................................... |translate-usage|
+
+==============================================================================
+1. Usage                                                   *translate-install*
+
+Use your favorite plugin manager.
+
+- with {vim-plug}{1}
+  1. Add `Plug 'VincentCordobes/vim-translate'` to .vimrc
+  2. Run `:PlugInstall`
+  
+Make sure you've installed {translate-shell}{2}
+
+                                {1} https://github.com/junegunn/vim-plug
+                                {2} https://github.com/soimort/translate-shell
+
+==============================================================================
+2. Usage                                                     *translate-usage*
+
+Translate source → target
+See https://github.com/soimort/translate-shell#code-list for code list
+>
+  :Translate [source]:target
+<
+    
+Quit the translation buffer
+>
+  :TranslateClear
+<
