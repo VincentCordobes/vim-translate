@@ -8,9 +8,9 @@ augroup translate
   autocmd bufenter * if (winnr("$") == 1 && exists("g:trans_buf")) | q! |  endif
 augroup END
 
-function! s:translate(source_target) range
+function! s:translate(source_target) abort
   if !executable('trans')
-    call msg_error('translate-shell not found. Please install it.')
+    call s:msg_error('translate-shell not found. Please install it.')
     return
   endif 
 
