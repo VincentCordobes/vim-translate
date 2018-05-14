@@ -5,7 +5,7 @@ let g:loaded_translate_plugin = 1
 
 augroup translate
   autocmd!
-  autocmd bufenter * if (winnr("$") == 1 && exists("g:trans_buf")) | q! |  endif
+  autocmd bufenter * if (winnr("$") == 1 && exists("s:trans_buf")) | q! |  endif
 augroup END
 
 function! s:translate(source_target) abort
@@ -17,8 +17,9 @@ function! s:translate(source_target) abort
   call s:translate_clear()
 
   silent! %y
-  botright 8new
-  let g:trans_buf = bufnr('%')
+  botright 8new Translation
+  set readonly
+  let s:trans_buf = bufnr('%')
   silent! put!
 
   let l:cmd = '%!trans '
@@ -33,8 +34,8 @@ function! s:translate(source_target) abort
 endfunction
 
 function! s:translate_clear() abort
-  if exists('g:trans_buf') && bufexists(g:trans_buf)
-    sil! exe 'bd! ' . g:trans_buf
+  if exists('s:trans_buf') && bufexists(s:trans_buf)
+    sil! exe 'bd! ' . s:trans_buf
   endif
 endfunction
 
