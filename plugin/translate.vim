@@ -14,7 +14,7 @@ function! s:translate(source_target) abort
   call s:translate_clear()
 
   silent! %y
-  botright 8new Translation
+  silent! botright 8new Translation
   set buftype=nofile
   let s:trans_buf = bufnr('%')
   silent! put!
