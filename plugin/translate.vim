@@ -38,6 +38,28 @@ function! s:translate_replace(source_target) abort
   let @a = l:backup
 endfunction
 
+function! s:translate_visual(source_target) abort
+  if !s:check_executable() | return | endif
+
+  call s:translate_clear()
+
+  let l:backup = @a
+  silent! normal! gv"ay
+
+  let l:cmd = s:translate_shell_cmd() . a:source_target . ' ' . shellescape(@a)
+  let l:translation = systemlist(l:cmd)
+
+  silent! botright 8new Translation
+  set buftype=nofile
+  let s:trans_buf = bufnr('%')
+  call append(line("$") - 1, l:translation)
+  execute('resize ' . line('$'))
+  silent! normal! gg
+  wincmd p
+
+  let @a = l:backup
+endfunction
+
 function! s:translate_clear() abort
   if exists('s:trans_buf') && bufexists(s:trans_buf)
     sil! exe 'bd! ' . s:trans_buf
@@ -66,5 +88,6 @@ endfunction
 
 command! -nargs=? Translate call s:translate(<q-args>)
 command! -nargs=? -range TranslateReplace call s:translate_replace(<q-args>)
+command! -nargs=? -range TranslateVisual call s:translate_visual(<q-args>)
 command! TranslateClear call s:translate_clear()
 
