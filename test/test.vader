@@ -1,0 +1,9 @@
+Given (an apple):
+  Apple
+
+Do (magic):
+  ciw
+  Banana
+
+Expect (a banana):
+  Banana

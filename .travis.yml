@@ -4,6 +4,16 @@ cache: pip
 
 before_script:
   - sudo pip install vim-vint
+  - git clone https://github.com/junegunn/vader.vim.git
 
 script:
   - vint **/*.vim
+  - |
+    vim -Nu <(cat << VIMRC
+    filetype off
+    set rtp+=vader.vim
+    set rtp+=.
+    set rtp+=after
+    filetype plugin indent on
+    syntax enable
+    VIMRC) -c 'Vader! test/*' > /dev/null
