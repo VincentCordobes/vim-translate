@@ -22,8 +22,11 @@ Make sure you've installed [translate-shell](https://github.com/soimort/translat
 Usage
 -----
 
+- `:'<,'>VTranslate en:fr`
+    - translate **english → french** (see [here](https://github.com/soimort/translate-shell#code-list) for code list) and replace the selection
+
 - `:Translate en:fr`
-    - translate **english → french** (see [here](https://github.com/soimort/translate-shell#code-list) for code list)
+    - translate **english → french** and put translation in a buffer
     
     
 - `:TranslateClear`
