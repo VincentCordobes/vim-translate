@@ -49,10 +49,10 @@ function! s:translate_visual(source_target) abort
   let l:cmd = s:translate_shell_cmd() . a:source_target . ' ' . shellescape(@a)
   let l:translation = systemlist(l:cmd)
 
-  silent! botright 8new Translation
+  silent! botright new Translation
   set buftype=nofile
   let s:trans_buf = bufnr('%')
-  call append(line("$") - 1, l:translation)
+  call append(0, l:translation)
   execute('resize ' . line('$'))
   silent! normal! gg
   wincmd p
