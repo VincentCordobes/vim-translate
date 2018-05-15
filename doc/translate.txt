@@ -30,7 +30,6 @@ See https://github.com/soimort/translate-shell#code-list for code list
 <
 
 Translate source → target and replace the selection
-See https://github.com/soimort/translate-shell#code-list for code list
 >
   :'<,'>TranslateReplace [source]:target
 <
