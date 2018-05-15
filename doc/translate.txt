@@ -23,13 +23,19 @@ Make sure you've installed {translate-shell}{2}
 ==============================================================================
 2. Usage                                                     *translate-usage*
 
-Translate source → target
+Translate source → target and put translation in a buffer
 See https://github.com/soimort/translate-shell#code-list for code list
 >
   :Translate [source]:target
 <
-    
+
+Translate source → target and replace the selection
+>
+  :'<,'>TranslateReplace [source]:target
+<
+
 Quit the translation buffer
 >
   :TranslateClear
 <
+

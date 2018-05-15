@@ -23,8 +23,10 @@ Usage
 -----
 
 - `:Translate en:fr`
-    - translate **english → french** (see [here](https://github.com/soimort/translate-shell#code-list) for code list)
+    - translate **english → french** (see [here](https://github.com/soimort/translate-shell#code-list) for code list) and put translation in a buffer
     
+- `:'<,'>TranslateReplace en:fr`
+    - translate **english → french** and replace the selection
     
 - `:TranslateClear`
     - Quit the translation buffer
