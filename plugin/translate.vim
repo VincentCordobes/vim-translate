@@ -14,15 +14,14 @@ function! s:translate(source_target) abort
   call s:translate_clear()
 
   silent! %y
-  silent! botright 8new Translation
-  set buftype=nofile
-  let s:trans_buf = bufnr('%')
+  call s:create_trans_buf()
   silent! put!
 
   exe '%!' . s:translate_shell_cmd() . a:source_target 
   execute('resize ' . line('$'))
   wincmd p
 endfunction
+
 
 function! s:translate_visual(source_target) abort
   if !s:check_executable() | return | endif
@@ -31,10 +30,7 @@ function! s:translate_visual(source_target) abort
 
   let l:backup = @a
   silent! normal! gv"ay
-
-  silent! botright 8new Translation
-  set buftype=nofile
-  let s:trans_buf = bufnr('%')
+  call s:create_trans_buf()
   silent! normal! "aP
 
   exe '%!' . s:translate_shell_cmd() . a:source_target 
@@ -57,6 +53,11 @@ function! s:translate_replace(source_target) abort
   let @a = l:backup
 endfunction
 
+function! s:create_trans_buf() abort
+  silent! botright 8new Translation
+  set buftype=nofile
+  let s:trans_buf = bufnr('%')
+endfunction
 
 function! s:translate_clear() abort
   if exists('s:trans_buf') && bufexists(s:trans_buf)
