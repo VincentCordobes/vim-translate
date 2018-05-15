@@ -1,4 +1,4 @@
-vim-translate
+vim-translate [![Build Status](https://travis-ci.org/VincentCordobes/vim-translate.svg?branch=master)](https://travis-ci.org/VincentCordobes/vim-translate)
 =============
 
 🌎 A tiny [translate-shell](https://github.com/soimort/translate-shell) wrapper for Vim.

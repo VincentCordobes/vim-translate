@@ -1,0 +1,9 @@
+language: vim
+
+cache: pip
+
+before_script:
+  - sudo pip install vim-vint
+
+script:
+  - vint **/*.vim
