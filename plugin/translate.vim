@@ -3,10 +3,7 @@ if exists('g:loaded_translate_plugin')
 endif
 let g:loaded_translate_plugin = 1
 
-augroup translate
-  autocmd!
-  autocmd bufenter * if (winnr("$") == 1 && exists("s:trans_buf")) | q! | endif
-augroup END
+let s:base_cmd = 'trans -no-ansi -no-auto -no-warn -brief'
 
 function! s:translate(source_target) abort
   if !s:check_executable() | return | endif
@@ -19,7 +16,7 @@ function! s:translate(source_target) abort
   let s:trans_buf = bufnr('%')
   silent! put!
 
-  exe '%!' . s:translate_shell_cmd() . a:source_target 
+  exe '%!' . s:base_cmd . ' ' . a:source_target 
   execute('resize ' . line('$'))
   wincmd p
 endfunction
@@ -30,7 +27,7 @@ function! s:translate_replace(source_target) abort
   let l:backup = @a
   silent! normal! gv"ay
 
-  let l:cmd = s:translate_shell_cmd() . a:source_target . ' ' . shellescape(@a)
+  let l:cmd = s:base_cmd . ' ' . a:source_target . ' ' . shellescape(@a)
   let l:translation = systemlist(l:cmd)
   let @a = join(l:translation, "\n")
   silent! normal! gv"ap
@@ -60,9 +57,14 @@ function! s:check_executable() abort
   return 1
 endfunction
 
-function! s:translate_shell_cmd()
-  return 'trans -no-ansi -no-auto -no-warn -brief '
+function! s:is_trans_buf_open() abort
+  return exists('s:trans_buf') && bufnr('%') == s:trans_buf
 endfunction
+
+augroup translate
+  autocmd!
+  autocmd bufenter * if (winnr("$") == 1 && s:is_trans_buf_open()) | q! | endif
+augroup END
 
 command! -nargs=? Translate call s:translate(<q-args>)
 command! -nargs=? -range TranslateReplace call s:translate_replace(<q-args>)
