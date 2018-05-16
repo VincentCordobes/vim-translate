@@ -11,14 +11,31 @@ function! s:translate(source_target) abort
   call s:translate_clear()
 
   silent! %y
-  silent! botright 8new Translation
-  set buftype=nofile
-  let s:trans_buf = bufnr('%')
+  call s:new_trans_buf()
   silent! put!
 
   exe '%!' . s:base_cmd . ' ' . a:source_target 
   execute('resize ' . line('$'))
   wincmd p
+endfunction
+
+function! s:translate_visual(source_target) abort
+  if !s:check_executable() | return | endif
+
+  call s:translate_clear()
+
+  let l:backup = @a
+
+  silent! normal! gv"ay
+  call s:new_trans_buf()
+  silent! normal! "aP
+
+  exe '%!' . s:base_cmd . ' ' . a:source_target 
+  execute('resize ' . line('$'))
+  wincmd p
+
+  silent! normal! gv
+  let @a = l:backup
 endfunction
 
 function! s:translate_replace(source_target) abort
@@ -40,6 +57,12 @@ function! s:translate_clear() abort
     sil! exe 'bd! ' . s:trans_buf
     unlet s:trans_buf
   endif
+endfunction
+
+function! s:new_trans_buf() abort
+  silent! botright 8new Translation
+  set buftype=nofile
+  let s:trans_buf = bufnr('%')
 endfunction
 
 function! s:msg_error(str) abort
@@ -67,6 +90,6 @@ augroup translate
 augroup END
 
 command! -nargs=? Translate call s:translate(<q-args>)
+command! -nargs=? -range TranslateVisual call s:translate_visual(<q-args>)
 command! -nargs=? -range TranslateReplace call s:translate_replace(<q-args>)
 command! TranslateClear call s:translate_clear()
-
