@@ -23,19 +23,23 @@ Make sure you've installed {translate-shell}{2}
 ==============================================================================
 2. Usage                                                     *translate-usage*
 
-Translate source → target and put translation in a buffer
-See https://github.com/soimort/translate-shell#code-list for code list
+Translate the whole buffer and put it in a scratch buffer
 >
-  :Translate [source]:target
+  :Translate [options] [source]:[targets]
 <
 
-Translate source → target and replace the selection
+Translate a visual selection and put it in a scratch buffer
 >
-  :'<,'>TranslateReplace [source]:target
+  :'<,'>TranslateVisual [options] [source]:[targets]
+<
+
+Translate and replace a visual selection
+>
+  :'<,'>TranslateReplace [options] [source]:[targets]
 <
 
 Quit the translation buffer
 >
   :TranslateClear
 <
-
+See https://github.com/soimort/translate-shell#usage for more.

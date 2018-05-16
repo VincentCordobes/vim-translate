@@ -22,14 +22,20 @@ Make sure you've installed [translate-shell](https://github.com/soimort/translat
 Usage
 -----
 
-- `:Translate en:fr`
-    - translate **english → french** (see [here](https://github.com/soimort/translate-shell#code-list) for code list) and put translation in a buffer
-    
-- `:'<,'>TranslateReplace en:fr`
-    - translate **english → french** and replace the selection
-    
+
+Translate the whole buffer and put it in a scratch buffer
+- `:Translate [options] [source]:[targets]`
+
+Translate a visual selection and put it in a scratch buffer
+- `:'<,'>TranslateVisual [options] [source]:[targets]`
+
+Translate and replace a visual selection
+- `:'<,'>TranslateReplace [options] [source]:[targets]`
+
+Quit the translation buffer
 - `:TranslateClear`
-    - Quit the translation buffer
+
+See [here](https://github.com/soimort/translate-shell#usage) to know more about _options_
 
 
 License
