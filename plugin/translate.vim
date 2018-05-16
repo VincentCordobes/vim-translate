@@ -44,9 +44,9 @@ function! s:translate_replace(source_target) abort
   let l:backup = @a
   silent! normal! gv"ay
 
-  let l:cmd = s:base_cmd . ' ' . a:source_target . ' ' . shellescape(@a)
-  let l:translation = systemlist(l:cmd)
-  let @a = join(l:translation, "\n")
+  let l:cmd = s:base_cmd . ' ' . a:source_target
+  let @a = system(l:cmd, @a)[:-2]
+  
   silent! normal! gv"ap
 
   let @a = l:backup
@@ -62,6 +62,8 @@ endfunction
 function! s:new_trans_buf() abort
   silent! botright 8new Translation
   set buftype=nofile
+  set bufhidden=hide
+  set noswapfile
   let s:trans_buf = bufnr('%')
 endfunction
 
