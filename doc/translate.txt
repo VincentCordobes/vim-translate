@@ -5,15 +5,16 @@ CONTENTS                                                           *translate*
 
     1. Install ....................................... |translate-install|
     2. Usage ........................................... |translate-usage|
+    2. Configuration ................................... |translate-usage|
 
 ==============================================================================
 1. Usage                                                   *translate-install*
 
 Use your favorite plugin manager.
-
-- with {vim-plug}{1}
-  1. Add `Plug 'VincentCordobes/vim-translate'` to .vimrc
-  2. Run `:PlugInstall`
+Example with {vim-plug}{1}
+>
+  Plug 'VincentCordobes/vim-translate'
+<
   
 Make sure you've installed {translate-shell}{2}
 
@@ -43,3 +44,17 @@ Quit the translation buffer
   :TranslateClear
 <
 See https://github.com/soimort/translate-shell#usage for more.
+
+
+==============================================================================
+2. Configuration                                             *translate-usage*
+
+2.1 g:translate#default_languages              *g:translate#default_languages*
+
+A dictionary of defaults source → target.
+>
+  let g:translate#default_languages = {
+        \ 'fr': 'en',
+        \ 'en': 'fr'
+        \ }
+<
