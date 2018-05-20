@@ -1,0 +1,78 @@
+
+--------------------------------------------
+- :Translate
+--------------------------------------------
+
+Given (A text on a single line):
+  Hello, what time is it ?
+
+Execute (Translate to french):
+  Translate :fr
+  wincmd p
+
+Expect (The translation in a split window):
+  Bonjour, quelle heure est-il?
+  
+---
+
+Given (A text on multiple lines):
+  Hello, what time is it ?
+  Good, it's time!
+
+Execute (Translate to french):
+  Translate :fr
+  wincmd p
+
+Expect (The translation in a split window):
+  Bonjour, quelle heure est-il?
+  Bon, c'est l'heure!
+  
+---
+
+--------------------------------------------
+- :TranslateVisual
+--------------------------------------------
+
+Given (A text on multiple lines):
+  Hello, what time is it ?
+  Good, it's time!
+
+Do (translate the whole paragraph):
+  vip
+  :TranslateVisual :fr\<CR>
+  :wincmd p\<CR>
+
+Expect (The translation in a split window):
+  Bonjour, quelle heure est-il?
+  Bon, c'est l'heure!
+  
+---
+
+--------------------------------------------
+- :TranslateReplace
+--------------------------------------------
+Given (a text on multiple lines):
+  Hello, what time is it ?
+  Good, it's time!
+
+Do (select the first line only and translate):
+  V
+  :TranslateReplace :fr\<CR>
+
+Expect (the first line only replaced):
+  Bonjour, quelle heure est-il?
+  Good, it's time!
+---
+
+Given (a text on multiple lines):
+  Hello, what time is it ?
+  Good, it's time!
+
+Do (translate in place the whole paragraph):
+  vip
+  :TranslateReplace :fr\<CR>
+
+Expect (the first line only replaced):
+  Bonjour, quelle heure est-il?
+  Bon, c'est l'heure!
+---
