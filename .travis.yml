@@ -5,7 +5,6 @@ cache: pip
 before_script:
   - sudo pip install vim-vint
   - git clone https://github.com/junegunn/vader.vim.git
-  - sudo apt-get install gawk
   - wget git.io/trans
   - chmod +x ./trans
   - export PATH=$PWD:$PATH
