@@ -2,6 +2,7 @@ let s:default_options   = get(g:, 'translate#default_options', '-no-ansi -no-aut
 let s:default_languages = get(g:, 'translate#default_languages', {})
 
 let s:base_cmd = 'trans ' . s:default_options
+let s:is_win = has('win32') || has('win64')
 
 " {{{ Exposed
 
@@ -105,6 +106,14 @@ function! s:msg_error(str) abort
 endfunction
 
 function! s:check_executable() abort
+  " translate-shell works on windows via WSL or cygwin
+  " Thus we must set vim shell accordingly.
+  " However executable() doesn't seem to check to right $PATH 
+  " So bypassing that check on windows for now
+  if s:is_win
+    return 1
+  endif
+
   if !executable('trans')
     call s:msg_error('translate-shell not found. Please install it.')
     return 0

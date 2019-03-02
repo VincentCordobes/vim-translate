@@ -16,8 +16,8 @@ Expect (The translation in a split window):
 ---
 
 Given (A text on multiple lines):
-  Hello, what time is it ?
-  Good, it's time!
+  Hello, what time is it?
+  It's time!
 
 Execute (Translate to french):
   Translate :fr
@@ -25,7 +25,7 @@ Execute (Translate to french):
 
 Expect (The translation in a split window):
   Bonjour, quelle heure est-il?
-  Bon, c'est l'heure!
+  C'est l'heure!
   
 ---
 
@@ -34,8 +34,8 @@ Expect (The translation in a split window):
 --------------------------------------------
 
 Given (A text on multiple lines):
-  Hello, what time is it ?
-  Good, it's time!
+  Hello, what time is it?
+  It's time!
 
 Do (translate the whole paragraph):
   vip
@@ -44,7 +44,7 @@ Do (translate the whole paragraph):
 
 Expect (The translation in a split window):
   Bonjour, quelle heure est-il?
-  Bon, c'est l'heure!
+  C'est l'heure!
   
 ---
 
@@ -53,7 +53,7 @@ Expect (The translation in a split window):
 --------------------------------------------
 Given (a text on multiple lines):
   Hello, what time is it ?
-  Good, it's time!
+  It's time!
 
 Do (select the first line only and translate):
   V
@@ -61,12 +61,12 @@ Do (select the first line only and translate):
 
 Expect (the first line only replaced):
   Bonjour, quelle heure est-il?
-  Good, it's time!
+  It's time!
 ---
 
 Given (a text on multiple lines):
-  Hello, what time is it ?
-  Good, it's time!
+  Hello, what time is it?
+  It's time!
 
 Do (translate in place the whole paragraph):
   vip
@@ -74,5 +74,5 @@ Do (translate in place the whole paragraph):
 
 Expect (the first line only replaced):
   Bonjour, quelle heure est-il?
-  Bon, c'est l'heure!
+  C'est l'heure!
 ---

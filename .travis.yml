@@ -3,7 +3,7 @@ language: vim
 cache: pip
 
 before_script:
-  - sudo pip install vim-vint
+  - sudo pip install vim-vint==0.3.18
   - git clone https://github.com/junegunn/vader.vim.git
   - wget git.io/trans
   - chmod +x ./trans
