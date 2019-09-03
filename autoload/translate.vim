@@ -62,7 +62,8 @@ function! translate#operator(type, replace) abort
   elseif a:type ==# 'line'
     silent! normal! '[V']"ay
   else
-    return  " forget about blockwise selection for now
+    " Forget about blockwise selection for now
+    return
   endif
 
   let @a = s:translate('', @a)
