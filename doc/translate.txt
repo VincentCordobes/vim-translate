@@ -5,7 +5,7 @@ CONTENTS                                                           *translate*
 
     1. Install ....................................... |translate-install|
     2. Usage ........................................... |translate-usage|
-    2. Configuration ................................... |translate-usage|
+    3. Configuration .................................. |translate-config|
 
 ==============================================================================
 1. Usage                                                   *translate-install*
@@ -39,6 +39,12 @@ Translate and replace a visual selection
   :'<,'>TranslateReplace [options] [source]:[targets]
 <
 
+Translate using a motion : bind the exposed `<Plug>` mappings. For example
+>
+  :nmap <leader>ts <Plug>Translate
+  :nmap <leader>tr <Plug>TranslateReplace
+<
+
 Quit the translation buffer
 >
   :TranslateClear
@@ -47,9 +53,9 @@ See https://github.com/soimort/translate-shell#usage for more.
 
 
 ==============================================================================
-2. Configuration                                             *translate-usage*
+3. Configuration                                            *translate-config*
 
-2.1 g:translate#default_languages              *g:translate#default_languages*
+3.1 g:translate#default_languages              *g:translate#default_languages*
 
 A dictionary of defaults source → target.
 >
@@ -58,3 +64,5 @@ A dictionary of defaults source → target.
         \ 'en': 'fr'
         \ }
 <
+
+ vim:tw=78:et:ft=help:norl:

@@ -42,9 +42,18 @@ See [here](https://github.com/soimort/translate-shell#usage) to know more about 
 For convenience, you can create custom key mappings:
 
 ```vim
-nnoremap <silent> <leader>t :Translate<CR>
-vnoremap <silent> <leader>t :TranslateVisual<CR>
+nnoremap <silent> <leader>tt :Translate<CR>
+vnoremap <silent> <leader>tt :TranslateVisual<CR>
+vnoremap <silent> <leader>tr :TranslateReplace<CR>
 ```
+
+Using motions:
+
+```vim
+nmap <leader>ts <Plug>Translate
+nmap <leader>tr <Plug>TranslateReplace
+```
+
 
 Configuration
 -------------
