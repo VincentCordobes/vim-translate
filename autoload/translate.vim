@@ -43,17 +43,14 @@ function! translate#replace(source_target) range abort
   let @a = l:backup
 endfunction
 
-function! translate#wrap_operator_show(type)
-    call translate#operator(a:type, 0)
-endfunction
-
-function! translate#wrap_operator_replace(type)
+function! translate#replace_operator(type) abort
     call translate#operator(a:type, 1)
 endfunction
 
-function! translate#operator(type, replace) abort
+function! translate#operator(type, ...) abort
   if !s:check_executable() | return | endif
 
+  let l:replace = get(a:, 1, 0)
   let l:regtype = getregtype('a')
   let l:regtext = getreg('a')
 
@@ -67,7 +64,7 @@ function! translate#operator(type, replace) abort
   endif
 
   let @a = s:translate('', @a)
-  if a:replace != ''
+  if l:replace !=# ''
     silent! normal! gv"ap
   else
     call translate#open_trans_buf(@a)
