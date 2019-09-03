@@ -9,38 +9,41 @@ let s:is_win = has('win32') || has('win64')
 function! translate#run(source_target) abort
   if !s:check_executable() | return | endif
 
-  let l:backup = @a
+  let l:regtype = getregtype('a')
+  let l:regtext = getreg('a')
   silent! %yank a
 
   let l:translation = s:translate(a:source_target, @a)
   call translate#open_trans_buf(l:translation)
 
-  let @a = l:backup
+  call setreg('a', l:regtext, l:regtype)
 endfunction
 
 function! translate#visual(source_target) range abort
   if !s:check_executable() | return | endif
 
-  let l:backup = @a
+  let l:regtype = getregtype('a')
+  let l:regtext = getreg('a')
   silent! normal! gv"ay
 
   let l:translation = s:translate(a:source_target, @a)
   call translate#open_trans_buf(l:translation)
 
-  let @a = l:backup
+  call setreg('a', l:regtext, l:regtype)
 endfunction
 
 function! translate#replace(source_target) range abort
   if !s:check_executable() | return | endif
 
-  let l:backup = @a
+  let l:regtype = getregtype('a')
+  let l:regtext = getreg('a')
   silent! normal! gv"ay
 
   let @a = s:translate(a:source_target, @a)
 
   silent! normal! gv"ap
 
-  let @a = l:backup
+  call setreg('a', l:regtext, l:regtype)
 endfunction
 
 function! translate#open_trans_buf(text) abort
