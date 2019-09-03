@@ -43,6 +43,38 @@ function! translate#replace(source_target) range abort
   let @a = l:backup
 endfunction
 
+function! translate#wrap_operator_show(type)
+    call translate#operator(a:type, 0)
+endfunction
+
+function! translate#wrap_operator_replace(type)
+    call translate#operator(a:type, 1)
+endfunction
+
+function! translate#operator(type, replace) abort
+  if !s:check_executable() | return | endif
+
+  let l:regtype = getregtype('a')
+  let l:regtext = getreg('a')
+
+  if a:type ==# 'char'
+    silent! normal! `[v`]"ay
+  elseif a:type ==# 'line'
+    silent! normal! '[V']"ay
+  else
+    return  " forget about blockwise selection for now
+  endif
+
+  let @a = s:translate('', @a)
+  if a:replace != ''
+    silent! normal! gv"ap
+  else
+    call translate#open_trans_buf(@a)
+  endif
+
+  call setreg('a', l:regtext, l:regtype)
+endfunction
+
 function! translate#open_trans_buf(text) abort
   let l:winnr = winnr()
   call translate#clear_trans_buf()

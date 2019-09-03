@@ -39,6 +39,12 @@ Translate and replace a visual selection
   :'<,'>TranslateReplace [options] [source]:[targets]
 <
 
+Translate using a motion : bind the exposed `<Plug>` mappings. For example
+>
+  :nmap <leader>ts <Plug>TranslateText
+  :nmap <leader>tr <Plug>TranslateReplaceText
+<
+
 Quit the translation buffer
 >
   :TranslateClear
